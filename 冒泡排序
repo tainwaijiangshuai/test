@@ -1,0 +1,42 @@
+//冒泡排序
+        static void BubbleSort(int[]arr,int lenth)  //冒泡排序的语法实现
+        {
+            //外面申明一个标识 来表示 该轮是否进行了交换
+            //当一轮结束过后 如果isSort这个标识 还是false
+            //那就意味着 已经是最终排序了 不需要再判断交换了
+            bool isSort=false;           
+            //每轮开始时 默认没有进行交换
+            for (int i = 0; i < lenth - 1; i++)
+            { 
+                for(int j=0;j<lenth-i-1;j++)
+                {
+                    if(arr[j] < arr[j+1])
+                    {
+                        isSort=true;
+                        int temp=arr[j];
+                        arr[j]=arr[j+1];
+                        arr[j+1]=temp;
+                    }
+                }
+                if (!isSort) { break; }
+            }
+        }
+        //冒泡排序的打印实现
+        static void BubbleSortWriteLine(int[]arr,int lenth)
+        { 
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.Write(" "+arr[i]);
+            }
+        }
+
+        //主函数  程序主入口
+        static void Main(string[] args)
+            {
+            int[] arr1 = { 1, 9, 2, 6, 3 ,5,8,7,2};
+            int lenth=arr1.Length;
+            BubbleSort(arr1,lenth);
+            BubbleSortWriteLine(arr1,lenth);
+            }
+    }
+}
