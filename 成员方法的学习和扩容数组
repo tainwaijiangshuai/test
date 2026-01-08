@@ -1,0 +1,73 @@
+//引用命名空间
+using System;
+using System.Globalization;
+//命名空间
+namespace program
+{
+ class Person
+    {
+        public string name;
+        public int age;
+      //朋友们
+        public Person[] friends;
+        /// <summary>
+        /// 添加朋友的方法
+        /// </summary>
+        /// <param name="p">传入新朋友</param>
+        public void AddFriend(Person p)
+        {
+            if(friends==null)
+            {
+                friends= new Person[] { p};
+            }
+            else
+            {
+                //新建一个 朋友数组
+                Person[] newFriends=new Person[friends.Length+1];
+                //将旧的 朋友数组进行搬家
+                for (int i = 0; i < friends.Length; i++) 
+                { 
+                    newFriends[i]=friends[i];
+                }
+                //将新的朋友放到最后一个
+                newFriends[newFriends.Length-1]=p;
+                //地址重定向
+                friends= newFriends;
+            }
+
+        }
+        /// <summary>
+        /// 说话的行为
+        /// </summary>
+        /// <param name="str">说话的内容</param>
+        public void Speak(string str)
+        {
+            Console.Write("{0}说{1}",name,str);
+        }
+        /// <summary>
+        /// 判断是否成年
+        /// </summary>
+        /// <returns></returns>
+        public bool IsAdult()
+        {
+            return age >= 18;
+        }
+    }
+
+    //类
+    class Program
+    {
+        //主函数  程序主入口
+        static void Main(string[] args)
+            {
+            //成员方法 必须实例化出对象 再通过对象来使用 相当于该对象执行了某个行为
+            Person p= new Person();
+            p.name = "李华";
+            p.age = 18;
+                   if(p.IsAdult())
+            {
+                p.Speak("我是傻逼");
+            }
+        }
+    }
+}
