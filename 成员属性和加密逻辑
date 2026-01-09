@@ -1,0 +1,40 @@
+namespace program
+{
+  class Person
+    {
+        private string name;
+        private int age;
+        private int money;
+        private bool sex;
+
+        //属性的命名一般使用  帕斯卡命名法
+        public int Money
+        {
+            get 
+            { 
+                //可以在返回之前添加一些逻辑规则
+                //意味着   这个属性可以获取的内容
+                //解密逻辑
+                return money-5;
+            }
+            set 
+            {
+                //可以在设置之前添加一些逻辑规则
+                //value 关键字   用于表示   外部传入的值
+               //加密逻辑
+                money = value+5;
+            }
+        } 
+   }
+    //类
+    class Program
+    { 
+        //主函数  程序主入口
+        static void Main(string[] args)
+            {
+            Person LiHua = new Person();
+            LiHua.Money = 5;
+            Console.WriteLine($"李华的钱是{LiHua.Money}");
+            }
+
+      }
