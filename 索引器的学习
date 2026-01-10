@@ -1,0 +1,51 @@
+//命名空间
+namespace program
+{
+  class Person
+    {
+        private string name;
+        private int age;
+        private Person[] friends;
+
+        public Person this[int index]
+        {
+            get 
+            { 
+                //索引器的逻辑判断
+                //判断数组是否为空
+                if(index==null||index>friends.Length-1)
+                {
+                    return null;
+                }
+                return friends[index];
+            }
+        set
+            {
+                if(index==null)
+                {
+                    friends = new Person[] { value};
+                }
+                else if(index> friends.Length - 1)
+                {
+                    //自己定的逻辑(规则)   如果索引器越界  就默认把最后一个朋友顶掉
+                    friends[friends.Length-1] = value;
+                }
+                    //value代表传入的值
+                    friends[index] = value;
+            }
+        }
+
+   }
+    //类
+    class Program
+    { 
+        //主函数  程序主入口
+        static void Main(string[] args)
+            {
+            Person p= new Person();
+            p[0]=new Person();
+            }
+
+      }
+    
+}
